@@ -18,7 +18,7 @@ public class Display {
 	}
 	
 	private void addMainOptions() {
-		mainOptions.add("Select an option from  below: ");
+		mainOptions.add("\nSelect an option from  below: ");
 		mainOptions.add("(1) Display all files");
 		mainOptions.add("(2) File management options");
 		mainOptions.add("(3) Exit program");
@@ -49,6 +49,7 @@ public class Display {
 			choice = getUserInput(choice);
 			switch (choice) {
 			case 1: { // Display all files
+				this.fileManager.displayAllFiles();
 				break;
 			}
 			case 2: { // Display file management options
@@ -78,9 +79,11 @@ public class Display {
 				break;
 			}
 			case 2: { // delete a file
+				this.fileManager.removeFile();
 				break;
 			}
 			case 3: { // search for a file
+				this.fileManager.searchFile();
 				break;
 			}
 			case 4: { // return to menu page
