@@ -19,9 +19,12 @@ public class FileManager {
 			checkFile.mkdir();
 		}
 		
-		String[] allFiles = checkFile.list();
-		for(String fileName : allFiles) {
-			listOfAllFiles.add(fileName);
+		File[] allFiles = checkFile.listFiles();
+		for(File fileName : allFiles) {
+			if(!fileName.isFile()) {
+				continue;
+			}
+			listOfAllFiles.add(fileName.getName());
 		}
 	}
 	
@@ -69,6 +72,8 @@ public class FileManager {
 		String fileName = getFileName();
 		boolean fileIsFound = false;
 		
+		// this is a terrible search method
+		// if there is n number of files it has O(n)
 		for(String file:listOfAllFiles) {
 			if(file.equals(fileName)) {
 				fileIsFound = true;
