@@ -100,7 +100,6 @@ public class FileManager {
 		
 		for (String fileName : listOfAllFiles) {
 			Matcher matcher = pattern.matcher(fileName);
-			
 			if(!matcher.find()) {
 				continue;
 			}
@@ -115,12 +114,6 @@ public class FileManager {
 			System.out.println("\nFile " + regex + " could not be found. \nCheck the file name.\n");
 		}
 		
-		
-//		if(listOfAllFiles.contains(fileName)) {
-//			System.out.println("\nFile " + fileName + " was found!\n");
-//		} else {
-//			System.out.println("\nFile " + fileName + " could not be found. \nCheck the file name.\n");
-//		}
 	}
 	
 }
