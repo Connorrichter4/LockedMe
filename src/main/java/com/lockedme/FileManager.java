@@ -53,7 +53,7 @@ public class FileManager {
 		Path path = Paths.get(filePath);
 		Path newFileName = path.getFileName();
 		
-		if(Files.notExists(path)) {
+		if(!path.toFile().exists()) {
 			System.out.println("File does not exist ... \n");
 			return;
 		}
@@ -95,23 +95,27 @@ public class FileManager {
 		System.out.print("Enter a file name to search for: ");
 		String regex = getUserInput();
 		List<String> searchedList = new ArrayList<>();
-		
-		Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
-		
-		for (String fileName : listOfAllFiles) {
-			Matcher matcher = pattern.matcher(fileName);
-			if(!matcher.find()) {
-				continue;
+		try {			
+			Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+			
+			for (String fileName : listOfAllFiles) {
+				Matcher matcher = pattern.matcher(fileName);
+				if(!matcher.find()) {
+					continue;
+				}
+				searchedList.add(fileName);
 			}
-			searchedList.add(fileName);
-		}
-		
-		if(!searchedList.isEmpty()) {
-			System.out.print("\n");
-			searchedList.forEach(file -> System.out.println("File " + file + " was found!"));			
-			System.out.print("\n");
-		} else {
-			System.out.println("\nFile " + regex + " could not be found. \nCheck the file name.\n");
+			
+			if(!searchedList.isEmpty()) {
+				System.out.print("\n");
+				searchedList.forEach(file -> System.out.println("File " + file + " was found!"));			
+				System.out.print("\n");
+			} else {
+				System.out.println("\nFile " + regex + " could not be found. \nCheck the file name.\n");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("\nFile " + regex + " could not be found. \nCheck the search query.\n");
 		}
 		
 	}
