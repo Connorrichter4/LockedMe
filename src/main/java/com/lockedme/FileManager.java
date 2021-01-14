@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FileManager {
 
@@ -91,13 +93,34 @@ public class FileManager {
 	
 	public void searchFile() {
 		System.out.print("Enter a file name to search for: ");
-		String fileName = getUserInput();
+		String regex = getUserInput();
+		List<String> searchedList = new ArrayList<>();
 		
-		if(listOfAllFiles.contains(fileName)) {
-			System.out.println("\nFile " + fileName + " was found!\n");
-		} else {
-			System.out.println("\nFile " + fileName + " could not be found. \nCheck the file name.\n");
+		Pattern pattern = Pattern.compile(regex, Pattern.MULTILINE);
+		
+		for (String fileName : listOfAllFiles) {
+			Matcher matcher = pattern.matcher(fileName);
+			
+			if(!matcher.find()) {
+				continue;
+			}
+			searchedList.add(fileName);
 		}
+		
+		if(!searchedList.isEmpty()) {
+			System.out.print("\n");
+			searchedList.forEach(file -> System.out.println("File " + file + " was found!"));			
+			System.out.print("\n");
+		} else {
+			System.out.println("\nFile " + regex + " could not be found. \nCheck the file name.\n");
+		}
+		
+		
+//		if(listOfAllFiles.contains(fileName)) {
+//			System.out.println("\nFile " + fileName + " was found!\n");
+//		} else {
+//			System.out.println("\nFile " + fileName + " could not be found. \nCheck the file name.\n");
+//		}
 	}
 	
 }
