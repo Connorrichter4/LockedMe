@@ -1,5 +1,6 @@
 package com.lockedme;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,7 +11,7 @@ public class Display {
 	private List<String> fileOptions = new ArrayList<>();
 	private FileManager fileManager;
 
-	public Display() {
+	public Display() throws IOException {
 		addMainOptions();
 		addFileOptions();
 		this.fileManager = new FileManager();
@@ -41,14 +42,15 @@ public class Display {
 		fileOptions.add("(3) Search for a file");
 		fileOptions.add("(4) Back to main menu");
 	}
-
+	
+	
 	private String getUserInput() {
 		Scanner scan = new Scanner(System.in);
 		String userInput = scan.nextLine();
 		return userInput;
 	}
 
-	private void displayMainOptions() {
+	private void displayMainOptions() throws IOException {
 
 		// to print out all main options
 		for (String option : mainOptions) {
@@ -75,7 +77,7 @@ public class Display {
 		displayMainOptions();
 	} // end of displayMain()
 
-	private void displayFileManagement() {
+	private void displayFileManagement() throws IOException {
 
 		for (String option : fileOptions) {
 			System.out.println(option);
@@ -98,13 +100,14 @@ public class Display {
 		}
 		case "4": { // return to menu page
 			System.out.println("Changing back to the main menu ... \n");
+			displayMainOptions();
 			break;
 		}
 		default:
 			System.out.println("Invalid input... \nPlease try again");
 		} // end of switch statement
 
-		displayMainOptions();
+		displayFileManagement();
 
 	} // end of displayFileManagement();
 
