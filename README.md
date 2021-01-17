@@ -26,6 +26,59 @@ Company Lockers Pvt. Ltd. hired you as a Full Stack Developer. They aim to digit
 
 ![Flowchart](https://user-images.githubusercontent.com/58124052/104653073-aab8b880-567f-11eb-8876-fb503ce1c90e.png)
 
+### Sprints
+
+#### Sprint 1:
+
+- Build welcome screen
+- Add app name and developer details
+- Show main menu
+- Add option to display all files in ascending order
+- Implement display function
+- Add option to close the application
+- Implement closing function
+
+#### Sprint 2:
+
+- Show option to display all file operations
+- Show file operations menu
+- Add option to add files
+- Implement add file function
+- Add option to return to main menu
+
+#### Sprint 3:
+
+- Add option to delete files
+- Implement delete function
+- Add option to search for file
+- Implement option to search for file using regex
+
+### Data Structures and Algorithms
+
+#### TreeSet
+
+A TreeSet was chosen as the data structure here because, each file will have a unique name and the names of the files will be sorted into their naturally occurring order.
+
+The set is not thread-safe and will need to be synchronized if multiple threads are accessing the set at the same time and at least one thread is modifying the set. The basic operations of the set, including add, remove, and contains, require a guaranteed time complexity of log(n).
+
+#### ArrayList
+
+An ArrayList was implemented in the searching algorithm because, the total number of files in the directory is unknown. The ArrayList can be resized depending on the need of the search results.
+
+The ArrayList is not thread-safe and would need to be synchronized if multiple threads were accessing the list at the same time. The basic operations of the list require a time complexity of n.
+
+#### Searching Algorithm
+
+Since the data structure implemented is a TreeSet, a simple searching method would be to use the contains operations which would have a time complexity of log(n). However, to include regular expressions or regex for pattern matching I have implemented an ArrayList. For this, I looped over the TreeSet checking for any file name matching the regex and pushed the selected file name to the ArrayList. Finally, I looped over the list and printed out the matching file names.
+
+### Future plans
+
+- Implement option for user to add multiple files at once
+- Create a GUI to improve ease of use
+- Create a user and admin system to prevent certain files and folders from being copied or altered
+- Implement user and admin login
+- Allow user to read contents of selected file
+
 ## Technologies Used
 
 - Eclipse/IntelliJ: An IDE to code for the application
