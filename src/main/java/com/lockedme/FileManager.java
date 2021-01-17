@@ -9,7 +9,8 @@ import java.util.regex.Pattern;
 
 public class FileManager {
 
-	final private String directoryPath = "src/main/resources/temp";
+//	final private String directoryPath = "src/main/resources/temp";
+	final private String directoryPath = "/Users/connorrichter/Desktop/temp";
 	private Set<String> listOfAllFiles = new TreeSet<>();
 	
 	public FileManager() {
@@ -18,18 +19,23 @@ public class FileManager {
 	
 	private void checkDirectory() {
 		File checkFile = new File(directoryPath);
-		if(!checkFile.exists()) {
-			System.out.println("Creating a new directory ... \n");
-			checkFile.mkdir();
+		
+		try {
+			File[] allFiles = checkFile.listFiles();
+			for(File fileName : allFiles) {
+				if(!fileName.isFile()) {
+					continue;
+				}
+				listOfAllFiles.add(fileName.getName());
+			}
+			
+		} catch (Exception e) {
+			if(!checkFile.exists()) {
+				System.out.println("Creating a new directory ... \n");
+				checkFile.mkdir();
+			}
 		}
 		
-		File[] allFiles = checkFile.listFiles();
-		for(File fileName : allFiles) {
-			if(!fileName.isFile()) {
-				continue;
-			}
-			listOfAllFiles.add(fileName.getName());
-		}
 	}
 	
 	private String getUserInput() {
