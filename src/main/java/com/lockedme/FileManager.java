@@ -9,12 +9,12 @@ import java.util.regex.Pattern;
 
 public class FileManager {
 
-//	final private String directoryPath = "src/main/resources/temp";
-	final private String directoryPath = "/Users/connorrichter/Desktop/temp";
+	final private String directoryPath = "src/main/resources/temp";
 	private Set<String> listOfAllFiles = new TreeSet<>();
 	
 	public FileManager() {
 		checkDirectory();
+		
 	}
 	
 	private void checkDirectory() {
