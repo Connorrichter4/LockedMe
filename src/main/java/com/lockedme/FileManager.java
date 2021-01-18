@@ -56,10 +56,18 @@ public class FileManager {
 	public void addFile() {
 		System.out.print("Enter an existing file path: ");
 		String filePath = getUserInput();
-		Path path = Paths.get(filePath);
-		Path newFileName = path.getFileName();
+		Path path;
+		Path newFileName;
 		
-		if(!path.toFile().exists()) {
+		try { // to check for invalid file paths
+			path = Paths.get(filePath);
+			newFileName = path.getFileName();
+		} catch (Exception e) {
+			System.out.println("Invalid file path ...\n");
+			return;
+		}
+		
+		if(!path.toFile().exists()) { // to check if the file exists
 			System.out.println("File does not exist ... \n");
 			return;
 		}

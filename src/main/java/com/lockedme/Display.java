@@ -21,6 +21,7 @@ public class Display {
 
 	private static void showWelcomeScreen() {
 		System.out.println("---------------------------");
+		System.out.println(" -- WELCOME -- ");
 		System.out.println("Application: LockedMe.com");
 		System.out.println("Developer: Connor");
 		System.out.println("---------------------------");
