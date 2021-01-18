@@ -57,13 +57,13 @@ Company Lockers Pvt. Ltd. hired you as a Full Stack Developer. They aim to digit
 
 #### TreeSet
 
-A TreeSet was chosen as the data structure here because, each file will have a unique name and the names of the files will be sorted into their naturally occurring order.
+A TreeSet was chosen as the data structure here because each file will have a unique name and the names of the files will be sorted into their naturally occurring order.
 
 The set is not thread-safe and will need to be synchronized if multiple threads are accessing the set at the same time and at least one thread is modifying the set. The basic operations of the set, including add, remove, and contains, require a guaranteed time complexity of log(n).
 
 #### ArrayList
 
-An ArrayList was implemented in the searching algorithm because, the total number of files in the directory is unknown. The ArrayList can be resized depending on the need of the search results.
+An ArrayList was implemented in the searching algorithm because the total number of files in the directory is unknown. The ArrayList can be resized depending on the need of the search results.
 
 The ArrayList is not thread-safe and would need to be synchronized if multiple threads were accessing the list at the same time. The basic operations of the list require a time complexity of n.
 
